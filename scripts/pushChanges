@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# This bash script pushes this live repo to the various tools the use it.
+# It is used during development stage to ensure recent un-commited changes
+# appear in the related tools.
+
