@@ -4,3 +4,14 @@
 # It is used during development stage to ensure recent un-commited changes
 # appear in the related tools.
 
+pushChanges() {
+	# objective: $1/.venv/lib/python3.12/site-packages/lpilGerbyConfig
+	thePath=$1/.venv/lib/python3.12/site-packages
+	rm -rf $thePath/lpilGerbyConfig
+	cp -R lpilGerbyConfig $thePath
+}
+
+
+pushChanges ../gerby-runner
+pushChanges ../lpil-gerby-builder
+pushChanges ../lpil-gerby-tagger
