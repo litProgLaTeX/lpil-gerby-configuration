@@ -18,7 +18,7 @@ The following tools will share their configuration files:
 
 - lpilGerbyBuilder (nightly rebuild)
 - lgtWebserver (tags/labels mapping webserver)
-- lgtExporer, ltgImporter (export/import tags/lables mappings)
+- lgtExplorer, ltgImporter (export/import tags/lables mappings)
 - lgtScanner (check the current tags/labels mappings for omissions)
 - gerbyRunner (PlasTeX/Gerby webserver)
 - gerbyCompiler (database builder for gerbyRunner)
