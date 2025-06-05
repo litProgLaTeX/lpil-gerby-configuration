@@ -36,8 +36,8 @@ def mergeYamlData(yamlData, newYamlData, thePath, baseDir) :
     print(f"ERROR(megeYamlData): Stopped merge at {thePath}")
     return
 
-  if type(yamlData) != type(newYamlData) :
-    print(f"ERROR(mergeYamlData): Incompatible types {type(yamlData)} and {type(newYamlData)} while trying to merge YAML data at {thePath}")
+  if type(yamlData) != type(newYamlData) :  # noqa
+    print(f"ERROR(mergeYamlData): Incompatible types {type(yamlData)} and {type(newYamlData)} while trying to merge YAML data at {thePath}")  # noqa
     print(f"ERROR(mergeYamlData): Stopped merge at {thePath}")
     return
 
@@ -58,7 +58,7 @@ def mergeYamlData(yamlData, newYamlData, thePath, baseDir) :
       elif isinstance(value, dict) :
         if key not in yamlData :
           yamlData[key] = {}
-        mergeYamlData(yamlData[key], value, thePath+'.'+key, baseDir)
+        mergeYamlData(yamlData[key], value, thePath + '.' + key, baseDir)
       else :
         yamlData[key] = copy.deepcopy(value)
   else :
@@ -82,7 +82,7 @@ class ConfigManager(object) :
     if addArgsFunc : addArgsFunc(parser)
     parser.add_argument(
       'configPaths', nargs='+',
-      help="One or more paths to either the current 'base directory' or YAML configuration files which collectively describe how to configure this LPiL Gerby tool. (YAML files MUST have the extension '.yaml')"
+      help="One or more paths to either the current 'base directory' or YAML configuration files which collectively describe how to configure this LPiL Gerby tool. (YAML files MUST have the extension '.yaml')"  # noqa
     )
     if chooseCollection :
       parser.add_argument(
@@ -135,7 +135,7 @@ class ConfigManager(object) :
       if theKey not in theDict :
         if 'default' in theDef : theDict[theKey] = theDef['default']
         elif 'msg' in theDef   : raise KeyError(
-          f"{theStrKeyPath}: Could not find key [{theKey}]: {theDef['msg']} (b)"
+          f"{theStrKeyPath}: Could not find key [{theKey}]: {theDef['msg']} (b)"  # noqa
         )
         else : raise KeyError(f"{theStrKeyPath}: Could not find [{theKey}]")
       return
@@ -158,7 +158,7 @@ class ConfigManager(object) :
       if aKey not in theDict :
         if 'msg' in theDef :
           raise KeyError(
-            f"{theStrKeyPath}: Could not find key [{curStrKeyPath}]: {theDef['msg']} (a)"
+            f"{theStrKeyPath}: Could not find key [{curStrKeyPath}]: {theDef['msg']} (a)"  # noqa
           )
         theDict[aKey] = {}
       theDict = theDict[aKey]
@@ -177,7 +177,7 @@ class ConfigManager(object) :
 
   def __getitem__(self, key, default=None) :
     if isinstance(key, (list, tuple)) : key = '.'.join(key)
-    origKey = key
+    # origKey = key
     thePath = key
     theDict = self.data
     while '.' in thePath :
@@ -212,7 +212,7 @@ class ConfigManager(object) :
     for aConfigPath in self.configPaths :
 
       if not aConfigPath.lower().endswith('.yaml') :
-        baseDir= aConfigPath
+        baseDir = aConfigPath
         self.baseDirs.append(aConfigPath)
         continue
 
